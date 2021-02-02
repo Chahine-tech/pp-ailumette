@@ -7,7 +7,9 @@ games of matches in js
 Use the package manager 
 
 ```bash
+
 npm install
+
 ```
 
 ## Usage
