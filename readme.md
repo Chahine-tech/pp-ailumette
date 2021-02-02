@@ -1,4 +1,4 @@
-# Foobar
+# Games
 
 Games of matches in js
 
