@@ -1,6 +1,6 @@
 # Foobar
 
-games of matches in js
+Games of matches in js
 
 ## Installation
 
