@@ -14,7 +14,7 @@ npm install
 
 ## Usage
 
-school
+School
 
 ## Contributing
 Chahine Benlahcen Tlemcani.
