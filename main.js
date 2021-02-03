@@ -1,9 +1,12 @@
 //const rm = require ("./remove")
-const qt = require ("./quest")
+//const qt = require ("./quest")
+const readline = require('readline');
 
 /*Initialisation du tableau
 */
-
+var remainingMatches=16
+var selectedLine
+var selectedNbr
 let table = [
 
   ["*", "*", "*", "*", "*", "*", "*", "*", "*"],
@@ -43,29 +46,57 @@ function remove(line, nbr, table) {
       }
       
       if (nbr>count) {//S'il n'y as pas assez d'alumette sur la ligne
-        //Afficher une erreur
+      console.log("------------------\nThere is not enough matches on this line.\nYour turn has been skipped.\n------------------")
+      return table//Afficher une erreur
       } else {// Si le nombre d'alumette est dispo et que la ligne est bonne
               
             for (let i = 0; i < 9; i++) {//On parcours la ligne demandée
                 if ((table[line-1][i] == "|")&&(nbr>0)) {//Si la valeur est une alumette
                   table[line-1][i] = " "//On enlève l'alumette
                   nbr-- //On réduit le nombre d'alumette à enlever
+                  remainingMatches--
                 }
               }
 
         return table//
       }
-  }  
+  } else {
+    console.log("------------------\nPlease ensure to put an existing line.\nThe number of matches should be 1 or 2.\nYour turn has been skipped.\n------------------")
+    return table//Afficher une erreur
+  }
 
 }
 
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
 
+rl.question('Matches: ', function (x) {
+    rl.question('Line: ', function (y) {
+        selectedNbr = x
+        selectedLine = y
+        table = remove(selectedLine, selectedNbr, table)
+        display(table)
 
-qt('Matches: ').then((ans) => {
-  table = remove(ans, 1, table)
-  display(table)
-})
+        rl.close();
+    });
+});
+
+////AI
+let aiMatches=Math.floor( Math.random() * (2 - 1 + 1) + 1)
+let aiLines=Math.floor( Math.random() * (6 - 1 + 1) + 1)
+
+//while (remainingMatches>1) {
+
+  // qt('Matches: ').then((ans) => {
+  //   selectedNbr = ans
+  // })
+  // qt('Line: ').then((ans) => {
+  //   selectedLine = ans
+  // })
+//}
 
 
 
