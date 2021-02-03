@@ -1,4 +1,4 @@
-# Games
+# Games : PP-ailumette
 
 Games of matches in js.
 
